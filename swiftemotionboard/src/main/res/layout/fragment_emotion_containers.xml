@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="win.pipi.swiftemotionboard.fragment.EmotionMainFragment">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/emotions_container_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible" />
+
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/emotions_container_view_pager_magic_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/emotion_block_height" />
+
+</LinearLayout>

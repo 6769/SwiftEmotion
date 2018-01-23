@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="emotion_text_indictor_background">#455a64</color>
+    <color name="emotion_text_indictor_normal">#88ffffff</color>
+    <color name="emotion_text_indictor_indicator">#40c4ff</color>
+
+
+</resources>
