@@ -3,7 +3,7 @@ apply plugin: 'com.jakewharton.butterknife'
 
 
 
-buildscript{
+buildscript {
     repositories {
         //other repos will likely exist here like jcenter and mavenCentral
         google()
@@ -30,7 +30,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        resConfigs "en","zh"
+        resConfigs "en", "zh"
 
     }
 
