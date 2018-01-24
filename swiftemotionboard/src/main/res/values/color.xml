@@ -4,5 +4,8 @@
     <color name="emotion_text_indictor_normal">#88ffffff</color>
     <color name="emotion_text_indictor_indicator">#40c4ff</color>
 
+    <color name="gray">#aaa</color>
+    <color name="white">#fff</color>
+
 
 </resources>

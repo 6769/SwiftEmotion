@@ -35,6 +35,7 @@ import butterknife.Unbinder;
 import win.pipi.swiftemotionboard.R;
 import win.pipi.swiftemotionboard.R2;
 import win.pipi.swiftemotionboard.adapter.MainEmotionsAdapter;
+import win.pipi.swiftemotionboard.model.EmotionGroup;
 
 
 /**
@@ -58,8 +59,9 @@ public class EmotionMainFragment extends BaseFragment {
     private Resources resources;
     private Communicator communicator;
     private int dataType=0;
-    private Map<String,List<String>> emotionsMap=new HashMap<>();
-    private List<String> mIndictorTitle =new ArrayList<>();
+
+
+    private List<EmotionGroup> mEmotionGroup =new ArrayList<>();
     private List<Fragment> fragmentList=new ArrayList<>();
 
 
@@ -111,26 +113,27 @@ public class EmotionMainFragment extends BaseFragment {
 
         switch (dataType){
             case 0:
-                for(int i=0;i<mIndictorTitle.size();i++){
+                for(int i=0;i<mEmotionGroup.size();i++){
 
-                    //TODO:use title and emotion Maps;
-                    fragmentList.add(EmptyFragment1.newInstance());
+                    EmotionGroup agroup=mEmotionGroup.get(i);
+
+                    //fragmentList.add(EmptyFragment1.newInstance());
+                    fragmentList.add(EmotionBlockFactory.getSingleInstance().getFragment(agroup,communicator));
                 }
                 break;
             default:break;
         }
 
+//设计一下传递的数据结构
 
     }
 
 
-    public void setupTextEmotionBlocks(List<String> titles, Map<String,List<String>> emotions, Communicator communicator1){
+    public void setupTextEmotionBlocks(List<EmotionGroup> emotionGroups,  Communicator communicator1){
         dataType=0;
-        mIndictorTitle.clear();
-        mIndictorTitle.addAll(titles);
+        mEmotionGroup.clear();
+        mEmotionGroup.addAll(emotionGroups);
 
-        emotionsMap.clear();
-        emotionsMap.putAll(emotions);
 
         communicator = communicator1;
     }
@@ -140,7 +143,7 @@ public class EmotionMainFragment extends BaseFragment {
     private void initViewPager(){
         MainEmotionsAdapter adapter=new MainEmotionsAdapter(getFragmentManager(),fragmentList);
         emotionsContainerViewPager.setAdapter(adapter);
-        emotionsContainerViewPager.setOffscreenPageLimit(mIndictorTitle.size());
+        emotionsContainerViewPager.setOffscreenPageLimit(mEmotionGroup.size());
         //cache all the emotion fragments;
     }
     private void initMagicIndictor(){
@@ -156,13 +159,13 @@ public class EmotionMainFragment extends BaseFragment {
     protected class EmotionBlockTextNavigator extends CommonNavigatorAdapter{
         @Override
         public int getCount() {
-            return mIndictorTitle == null ? 0 : mIndictorTitle.size();
+            return mEmotionGroup == null ? 0 : mEmotionGroup.size();
         }
 
         @Override
         public IPagerTitleView getTitleView(Context context, final int index) {
             SimplePagerTitleView simplePagerTitleView = new ColorTransitionPagerTitleView(context);
-            simplePagerTitleView.setText(mIndictorTitle.get(index));
+            simplePagerTitleView.setText(mEmotionGroup.get(index).getGroupName());
             simplePagerTitleView.setNormalColor(resources.getColor(R.color.emotion_text_indictor_normal));
             simplePagerTitleView.setSelectedColor(Color.WHITE);
             simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
@@ -188,7 +191,7 @@ public class EmotionMainFragment extends BaseFragment {
     protected class EmotionBlockImgNavigator extends CommonNavigatorAdapter {
         @Override
         public int getCount() {
-            return mIndictorTitle.size();
+            return mEmotionGroup.size();
         }
         @Override
         public IPagerTitleView getTitleView(Context context, final int index) {

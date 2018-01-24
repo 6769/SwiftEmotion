@@ -3,5 +3,10 @@
 
     <dimen name="emotion_block_height">40dp</dimen>
     <dimen name="emotion_block_width">40dp</dimen>
+    <dimen name="emotion_block_indictor_height">16dp</dimen>
+
+
+    <dimen name="imageview_one_emotion_height">56dp</dimen>
+    <dimen name="imageview_one_emotion_width">56dp</dimen>
 
 </resources>

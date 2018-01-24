@@ -3,6 +3,8 @@ package win.pipi.swiftemotionboard.fragment;
 import java.util.List;
 import java.util.Map;
 
+import win.pipi.swiftemotionboard.model.EmotionGroup;
+
 /**
  * Created by pip on 2018/1/23.
  */
@@ -28,9 +30,9 @@ public class EmotionBlockFactory {
         return factory;
 
     }
-    public EmotionBlockFragment getFragment(List<String> list,Communicator communicator){
+    public EmotionBlockFragment getFragment(EmotionGroup group, Communicator communicator){
         EmotionBlockFragment emotionBlockFragment=EmotionBlockFragment.newInstance();
-        emotionBlockFragment.setEmotions(list);
+        emotionBlockFragment.setEmotions(group);
         emotionBlockFragment.setCommunicator(communicator);
 
         return emotionBlockFragment;
