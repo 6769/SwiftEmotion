@@ -59,6 +59,7 @@ public class EmotionBlockFragment extends BaseFragment {
 
         AEmotionAdapter adapter=new AEmotionAdapter(getContext(),group,communicator);
         emotionBlockRecyclerview.setLayoutManager(new GridLayoutManager(getContext(),6));
+        emotionBlockRecyclerview.setHasFixedSize(true);//lock size;
         emotionBlockRecyclerview.setAdapter(adapter);
 
         return view;
