@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import static com.bumptech.glide.request.RequestOptions.fitCenterTransform;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class AEmotionAdapter extends RecyclerView.Adapter<AEmotionAdapter.AEmoti
 
         Glide.with(context)
                 .load(uri)
+                .apply(fitCenterTransform())
                 .into(holder.imageviewOneEmotion);
 
 
